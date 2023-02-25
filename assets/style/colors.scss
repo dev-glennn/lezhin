@@ -1,0 +1,45 @@
+$b_100: #222324;
+$b_300: #3F4143;
+$w_100: #ffffff;
+$t_100: rgba(255, 255, 255, 0.87);
+$t_200: #DBDEE3;
+$t_300: #CFD0D1;
+$t_400: #A1A3A6;
+$t_500: #888B8F;
+$t_600: #6D7176;
+$t_700: #4b4e51;
+$red: #c62828;
+$r_900: #f95b59;
+
+$colors: (
+  b_100: $b_100,
+  b_300: $b_300,
+  w_100: $w_100,
+  t_100: $t_100,
+  t_200: $t_200,
+  t_300: $t_300,
+  t_400: $t_400,
+  t_500: $t_500,
+  t_600: $t_600,
+  t_700: $t_700,
+  red: $red,
+  r_900: $r_900
+);
+
+$colorOptions: (
+  'ft_': 'color',
+  'bg_': 'background-color',
+  'bs_': 'box-shadow'
+);
+
+@each $key, $color in ($colors){
+  @each $optionKey, $option in ($colorOptions) {
+    .#{$optionKey}#{$key} {
+      #{$option}: $color;
+    }
+  }
+}
+
+html, body {
+  @extend .bg_b_100;
+}
