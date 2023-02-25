@@ -1,14 +1,12 @@
 <template>
-  <div class="layout ft_w_100">
+  <div id="layout" class="layout ft_w_100">
     <Header />
-    <Nuxt/>
+    <Nuxt />
   </div>
 </template>
 
 <script>
 export default {
-  
-
 }
 </script>
 
@@ -20,6 +18,7 @@ export default {
   align-items: center;
   width: 100%;
   height: 100%;
+  overflow: auto;
   > *{
     width: 100%;
     max-width: 1000px;

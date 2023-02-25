@@ -8,9 +8,6 @@
         </li>
       </ul>
     </nav>
-    <div>
-      연재중
-    </div>
   </div>
 </template>
 
@@ -53,7 +50,7 @@
 <style lang="scss" scoped>
   #header {
     display: grid;
-    grid: 5rem / 4rem auto 5rem;
+    grid: 5rem / 4rem auto;
     align-items: center;
     width: 100%;
     padding: 0 1rem;
@@ -71,7 +68,7 @@
       justify-content: flex-start;
       gap: 2rem;
       a {
-        text-decoration: none;
+        padding: 1rem;
       }
     }
   }
