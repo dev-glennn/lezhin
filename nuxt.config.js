@@ -50,6 +50,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/style-resources',
   ],
 
   axios: {
@@ -59,6 +60,14 @@ export default {
     host: "localhost",
     port: "4000",
     prefix: "/api/",
+  },
+
+  styleResources: {
+    scss: [
+      '@/assets/style/default.css',
+      '@/assets/style/colors.scss',
+      '@/assets/style/font.scss'
+    ]
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
