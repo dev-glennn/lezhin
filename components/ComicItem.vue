@@ -3,7 +3,15 @@
     <img class="comic-img" :src="comicItem.thumbnailSrc" />
     <div class="comic-ranking SubTitle1">
       {{ comicItem.currentRank }}
-      <span v-if="comicItem.currentRank !== comicItem.previousRank" class="ranking-change Caption2" :class="comicItem.currentRank > comicItem.previousRank ? 'falling ft_t_500' : 'rising ft_red'">
+      <span
+        v-if="comicItem.currentRank !== comicItem.previousRank"
+        class="ranking-change Caption2"
+        :class="
+          comicItem.currentRank > comicItem.previousRank
+            ? 'falling ft_t_500'
+            : 'rising ft_red'
+        "
+      >
         {{ Math.abs(comicItem.currentRank - comicItem.previousRank) }}
       </span>
     </div>
@@ -25,50 +33,56 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      comicItem: {
-        type: Object,
-        default: () => {
-          return {
-            thumbnailSrc: String,
-            contentsState: String,
-            currentRank: Number,
-            previousRank: Number,
-            title: String,
-            artists: Array,
-            freedEpisodeSize: Number,
-            schedule: Array
-          }
-        }
-      }
-    },
-    computed: {
-      artists () {
-        // 작가명
-        if(!this.comicItem?.artists.length) return '';
-        return this.comicItem.artists.reduce((arr, cur) => {
-            let name = cur?.name || '';
-            if (arr) name = `, ${name}`;
-            return arr + name;
-          }, '');
+export default {
+  props: {
+    comicItem: {
+      type: Object,
+      default: () => {
+        return {
+          thumbnailSrc: String,
+          contentsState: String,
+          currentRank: Number,
+          previousRank: Number,
+          title: String,
+          artists: Array,
+          freedEpisodeSize: Number,
+          schedule: Array,
+        };
       },
-      dayText () {
-        if(this.comicItem?.contentsState !== 'scheduled' || !this.comicItem?.schedule?.periods?.length) return false;
-        const periodList = [
-          { MON: '월' },
-          { TUE: '화' },
-          { WED: '수' },
-          { THU: '목' },
-          { FRI: '금' },
-          { SAT: '토' },
-          { SUN: '일' },
-        ];
-        const schedule = this.comicItem.schedule.periods;
-        return Object.values(periodList.find((period) => Object.keys(period)[0] === schedule[0]))[0];
-      }
-    }
-  };
+    },
+  },
+  computed: {
+    artists() {
+      // 작가명
+      if (!this.comicItem?.artists.length) return '';
+      return this.comicItem.artists.reduce((arr, cur) => {
+        let name = cur?.name || '';
+        if (arr) name = `, ${name}`;
+        return arr + name;
+      }, '');
+    },
+    dayText() {
+      if (
+        this.comicItem?.contentsState !== 'scheduled' ||
+        !this.comicItem?.schedule?.periods?.length
+      )
+        return false;
+      const periodList = [
+        { MON: '월' },
+        { TUE: '화' },
+        { WED: '수' },
+        { THU: '목' },
+        { FRI: '금' },
+        { SAT: '토' },
+        { SUN: '일' },
+      ];
+      const schedule = this.comicItem.schedule.periods;
+      return Object.values(
+        periodList.find((period) => Object.keys(period)[0] === schedule[0])
+      )[0];
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -78,16 +92,16 @@
   align-items: flex-start;
   gap: 1rem;
   width: calc(calc(100% - 2rem) / 3);
-  .comic-img{
+  .comic-img {
     width: 7rem;
     object-fit: contain;
     flex-shrink: 0;
   }
-  .comic-ranking{
+  .comic-ranking {
     position: relative;
-    min-width: .7rem;
+    min-width: 0.7rem;
     flex-shrink: 0;
-    .ranking-change{
+    .ranking-change {
       position: absolute;
       display: inline-flex;
       align-items: center;
@@ -95,18 +109,18 @@
       bottom: 0;
       transform: translate(-50%, 100%);
       white-space: nowrap;
-      &::before{
+      &::before {
         content: '';
         display: inline-block;
-        margin-right: .1rem;
+        margin-right: 0.1rem;
       }
-      &.falling::before{
+      &.falling::before {
         border-top: 4px solid;
         border-left: 3px solid transparent;
         border-right: 3px solid transparent;
         @extend .bd_t_500;
       }
-      &.rising::before{
+      &.rising::before {
         border-bottom: 4px solid;
         border-left: 3px solid transparent;
         border-right: 3px solid transparent;
@@ -114,27 +128,28 @@
       }
     }
   }
-  .comic-ranking, .comic-content{
-    padding: .5rem 0;
+  .comic-ranking,
+  .comic-content {
+    padding: 0.5rem 0;
   }
-  .comic-content{
+  .comic-content {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    .title{
+    .title {
       margin-bottom: 1rem;
     }
     .artists {
-      margin-bottom: .3rem;
+      margin-bottom: 0.3rem;
     }
-    .day{
+    .day {
       display: flex;
       align-items: center;
       margin-top: auto;
       margin-left: auto;
-      padding: .2rem .5rem;
+      padding: 0.2rem 0.5rem;
       border-radius: 1rem;
       border: 1px solid;
     }
