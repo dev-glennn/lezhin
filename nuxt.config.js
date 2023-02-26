@@ -55,11 +55,16 @@ export default {
 
   axios: {
     headers: {
-      'Content-Type': 'application/json; charset=utf-8'
+      'Content-Type': 'application/json; charset=utf-8',
     },
     host: "localhost",
     port: "4000",
     prefix: "/api/",
+    proxy: true
+  },
+
+  proxy: {
+    '/api': 'http://localhost:4000',
   },
 
   styleResources: {
